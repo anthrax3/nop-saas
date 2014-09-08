@@ -1,0 +1,844 @@
+﻿@{
+    Layout = "";
+}
+@model FoxNetSoft.Plugin.ExternalAuth.Social.Models.ConfigurationModel
+@using Nop.Web.Framework;
+@using Nop.Core.Domain.Customers;
+@using (Html.BeginForm())
+{
+    @Html.Action("StoreScopeConfiguration", "Setting", new { area = "Admin" })
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#@Html.FieldIdFor(model => model.Facebook_Enable)").click(toggleRequireFacebook);
+            $("#@Html.FieldIdFor(model => model.Yahoo_Enable)").click(toggleRequireYahoo);
+            $("#@Html.FieldIdFor(model => model.Google_Enable)").click(toggleRequireGoogle);
+            $("#@Html.FieldIdFor(model => model.Twitter_Enable)").click(toggleRequireTwitter);
+            $("#@Html.FieldIdFor(model => model.LinkedIn_Enable)").click(toggleRequireLinkedIn);
+            $("#@Html.FieldIdFor(model => model.MailRu_Enable)").click(toggleRequireMailRu);
+            $("#@Html.FieldIdFor(model => model.Yandex_Enable)").click(toggleRequireYandex);
+            $("#@Html.FieldIdFor(model => model.Vk_Enable)").click(toggleRequireVk);
+            $("#@Html.FieldIdFor(model => model.Amazon_Enable)").click(toggleRequireAmazon);
+            $("#@Html.FieldIdFor(model => model.Microsoft_Enable)").click(toggleRequireMicrosoft);
+            
+            toggleRequireFacebook();
+            toggleRequireYahoo();
+            toggleRequireGoogle();
+            toggleRequireTwitter();
+            toggleRequireLinkedIn();
+            toggleRequireMailRu();
+            toggleRequireYandex();
+            toggleRequireVk();
+            toggleRequireAmazon();
+            toggleRequireMicrosoft();
+        });
+
+        function toggleRequireFacebook() {
+            if ($('#@Html.FieldIdFor(model => model.Facebook_Enable)').is(':checked')) {
+                $('#pnlFacebook_ClientKeyIdentifier').show();
+                $('#pnlFacebook_ClientSecret').show();
+                $('#pnlFacebook_CallbackURI').show();
+                $('#pnlFacebook_UserRegistrationType').show();
+                //$('#pnlFacebook_CreateVirtualEmail').show();
+            }
+            else {
+                $('#pnlFacebook_ClientKeyIdentifier').hide();
+                $('#pnlFacebook_ClientSecret').hide();
+                $('#pnlFacebook_CallbackURI').hide();
+                $('#pnlFacebook_UserRegistrationType').hide();
+                //$('#pnlFacebook_CreateVirtualEmail').hide();
+            }
+        }
+
+        function toggleRequireYahoo() {
+            if ($('#@Html.FieldIdFor(model => model.Yahoo_Enable)').is(':checked')) {
+                $('#pnlYahoo_UserRegistrationType').show();
+            }
+            else {
+                $('#pnlYahoo_UserRegistrationType').hide();
+            }
+        }
+
+        function toggleRequireGoogle() {
+            if ($('#@Html.FieldIdFor(model => model.Google_Enable)').is(':checked')) {
+                $('#pnlGoogle_ClientKeyIdentifier').show();
+                $('#pnlGoogle_ClientSecret').show();
+                $('#pnlGoogle_CallbackURI').show();
+                $('#pnlGoogle_UserRegistrationType').show();
+            }
+            else {
+                $('#pnlGoogle_ClientKeyIdentifier').hide();
+                $('#pnlGoogle_ClientSecret').hide();
+                $('#pnlGoogle_CallbackURI').hide();
+                $('#pnlGoogle_UserRegistrationType').hide();
+            }
+        }
+
+        function toggleRequireTwitter() {
+            if ($('#@Html.FieldIdFor(model => model.Twitter_Enable)').is(':checked')) {
+                $('#pnlTwitter_ClientKeyIdentifier').show();
+                $('#pnlTwitter_ClientSecret').show();
+                $('#pnlTwitter_CallbackURI').show();
+                $('#pnlTwitter_UserRegistrationType').show();
+            }
+            else {
+                $('#pnlTwitter_ClientKeyIdentifier').hide();
+                $('#pnlTwitter_ClientSecret').hide();
+                $('#pnlTwitter_CallbackURI').hide();
+                $('#pnlTwitter_UserRegistrationType').hide();
+            }
+        }
+
+        function toggleRequireLinkedIn() {
+            if ($('#@Html.FieldIdFor(model => model.LinkedIn_Enable)').is(':checked')) {
+                $('#pnlLinkedIn_ClientKeyIdentifier').show();
+                $('#pnlLinkedIn_ClientSecret').show();
+                $('#pnlLinkedIn_CallbackURI').show();
+                $('#pnlLinkedIn_UserRegistrationType').show();
+            }
+            else {
+                $('#pnlLinkedIn_ClientKeyIdentifier').hide();
+                $('#pnlLinkedIn_ClientSecret').hide();
+                $('#pnlLinkedIn_CallbackURI').hide();
+                $('#pnlLinkedIn_UserRegistrationType').hide();
+            }
+        }
+
+        function toggleRequireMailRu() {
+            if ($('#@Html.FieldIdFor(model => model.MailRu_Enable)').is(':checked')) {
+                $('#pnlMailRu_ClientKeyIdentifier').show();
+                $('#pnlMailRu_ClientSecret').show();
+                $('#pnlMailRu_CallbackURI').show();
+                $('#pnlMailRu_UserRegistrationType').show();
+            }
+            else {
+                $('#pnlMailRu_ClientKeyIdentifier').hide();
+                $('#pnlMailRu_ClientSecret').hide();
+                $('#pnlMailRu_CallbackURI').hide();
+                $('#pnlMailRu_UserRegistrationType').hide();
+            }
+        }
+
+        function toggleRequireYandex() {
+            if ($('#@Html.FieldIdFor(model => model.Yandex_Enable)').is(':checked')) {
+                $('#pnlYandex_ClientKeyIdentifier').show();
+                $('#pnlYandex_ClientSecret').show();
+                $('#pnlYandex_CallbackURI').show();
+                $('#pnlYandex_UserRegistrationType').show();
+            }
+            else {
+                $('#pnlYandex_ClientKeyIdentifier').hide();
+                $('#pnlYandex_ClientSecret').hide();
+                $('#pnlYandex_CallbackURI').hide();
+                $('#pnlYandex_UserRegistrationType').hide();
+            }
+        }
+        function toggleRequireVk() {
+            if ($('#@Html.FieldIdFor(model => model.Vk_Enable)').is(':checked')) {
+                $('#pnlVk_ClientKeyIdentifier').show();
+                $('#pnlVk_ClientSecret').show();
+                $('#pnlVk_CallbackURI').show();
+                $('#pnlVk_UserRegistrationType').show();
+            }
+            else {
+                $('#pnlVk_ClientKeyIdentifier').hide();
+                $('#pnlVk_ClientSecret').hide();
+                $('#pnlVk_CallbackURI').hide();
+                $('#pnlVk_UserRegistrationType').hide();
+            }
+        }
+
+        function toggleRequireAmazon() {
+            if ($('#@Html.FieldIdFor(model => model.Amazon_Enable)').is(':checked')) {
+                $('#pnlAmazon_ClientKeyIdentifier').show();
+                $('#pnlAmazon_ClientSecret').show();
+                $('#pnlAmazon_CallbackURI').show();
+                $('#pnlAmazon_UserRegistrationType').show();
+            }
+            else {
+                $('#pnlAmazon_ClientKeyIdentifier').hide();
+                $('#pnlAmazon_ClientSecret').hide();
+                $('#pnlAmazon_CallbackURI').hide();
+                $('#pnlAmazon_UserRegistrationType').hide();
+            }
+        }
+        function toggleRequireMicrosoft() {
+            if ($('#@Html.FieldIdFor(model => model.Microsoft_Enable)').is(':checked')) {
+                $('#pnlMicrosoft_ClientKeyIdentifier').show();
+                $('#pnlMicrosoft_ClientSecret').show();
+                $('#pnlMicrosoft_CallbackURI').show();
+                $('#pnlMicrosoft_UserRegistrationType').show();
+            }
+            else {
+                $('#pnlMicrosoft_ClientKeyIdentifier').hide();
+                $('#pnlMicrosoft_ClientSecret').hide();
+                $('#pnlMicrosoft_CallbackURI').hide();
+                $('#pnlMicrosoft_UserRegistrationType').hide();
+            }
+        }
+    </script>    
+    <table class="adminContent">
+       @if (Model.IsArsUa == false)
+       {
+       <tr>
+            <td colspan="2">
+                 @if (Model.IsRegisted == true)
+                 {
+                    @T("FoxNetSoft.ExternalAuth.Social.IsRegisted")
+                 }
+                 else
+                 {
+                    @T("FoxNetSoft.ExternalAuth.Social.IsNoRegisted")
+                    <br />
+                    <a href="http://www.foxnetsoft.com/nopcommerce-exauthsocial" target="blank" >Buy It Now</a>
+                 }
+             </td>
+        </tr>
+       }
+        <tr>
+            <td colspan="2">
+            <b>Important:</b><br />
+            <p>
+            It is important to do the following<br />
+            After installing the plug-in you shall:<br />
+            1. In menu, select “Configuration-External authentication methods” and check “Is active” box. <br />
+            <br />
+             The plug-in is fully functional. Unregistered version has one limitation – 50 users.
+            </p>
+            </td>
+        </tr>       
+            @*<tr>
+                <td class="adminTitle">
+                    @Html.NopLabelFor(model => model.AssociateExternalAccountWithUserByEmail):
+                </td>
+                <td class="adminData">
+                    @Html.EditorFor(model => model.AssociateExternalAccountWithUserByEmail)
+                </td>
+            </tr>*@
+            <tr>
+                <td class="adminTitle">
+                    @Html.NopLabelFor(model => model.IsActive):
+                </td>
+                <td class="adminData">
+                    @Html.EditorFor(model => model.IsActive)
+                </td>
+            </tr>
+            <tr>
+                <td class="adminTitle">
+                    @Html.NopLabelFor(model => model.AutoRegisterEnabled):
+                </td>
+                <td class="adminData">
+                    @Html.EditorFor(model => model.AutoRegisterEnabled)
+                </td>
+            </tr>
+
+            <tr class="adminSeparator">
+                <td colspan="2">
+                    <hr />
+                </td>
+            </tr>
+            <tr class="adminSeparator">
+                <td colspan="2">
+                    <b>@T("FoxNetSoft.ExternalAuth.Social.Facebook")</b>
+                    <br />
+                    Manage your applications <a href="https://developers.facebook.com/apps?ref=mb" target="blank" >https://developers.facebook.com/apps?ref=mb</a>
+                </td>
+            </tr>
+        <tr>
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.Facebook_Enable_OverrideForStore, model => model.Facebook_Enable, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.Facebook_Enable):
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.Facebook_Enable)
+                @Html.ValidationMessageFor(model => model.Facebook_Enable)
+            </td>
+        </tr>
+        <tr id="pnlFacebook_ClientKeyIdentifier">
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.Facebook_ClientKeyIdentifier_OverrideForStore, model => model.Facebook_ClientKeyIdentifier, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.Facebook_ClientKeyIdentifier):
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.Facebook_ClientKeyIdentifier)
+            </td>
+        </tr>
+        <tr id="pnlFacebook_ClientSecret">
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.Facebook_ClientSecret_OverrideForStore, model => model.Facebook_ClientSecret, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.Facebook_ClientSecret):
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.Facebook_ClientSecret)
+            </td>
+        </tr>
+        <tr id="pnlFacebook_CallbackURI">
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.Facebook_CallbackURI):
+            </td>
+            <td class="adminData">
+                <b>@Model.Facebook_CallbackURI</b>
+            </td>
+        </tr>
+        <tr id="pnlFacebook_UserRegistrationType">
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.Facebook_UserRegistrationType_OverrideForStore, model => model.Facebook_UserRegistrationType, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.Facebook_UserRegistrationType):
+            </td>
+            <td class="adminData">
+                @Html.DropDownListFor(model => model.Facebook_UserRegistrationType, ((UserRegistrationType)Model.Facebook_UserRegistrationType).ToSelectList())
+            </td>
+        </tr>
+        @*
+        <tr id="pnlFacebook_CreateVirtualEmail">
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.Facebook_CreateVirtualEmail):
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.Facebook_CreateVirtualEmail)
+                @Html.ValidationMessageFor(model => model.Facebook_CreateVirtualEmail)
+            </td>
+        </tr>
+        *@
+        @*Yahoo*@
+            <tr class="adminSeparator">
+                <td colspan="2">
+                    <hr />
+                </td>
+            </tr>
+            <tr class="adminSeparator">
+                <td colspan="2">
+                    <b>@T("FoxNetSoft.ExternalAuth.Social.Yahoo")</b>
+                </td>
+            </tr>
+        <tr>
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.Yahoo_Enable_OverrideForStore, model => model.Yahoo_Enable, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.Yahoo_Enable):
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.Yahoo_Enable)
+            </td>
+        </tr>
+        <tr id="pnlYahoo_UserRegistrationType">
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.Yahoo_UserRegistrationType_OverrideForStore, model => model.Yahoo_UserRegistrationType, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.Yahoo_UserRegistrationType):
+            </td>
+            <td class="adminData">
+                @Html.DropDownListFor(model => model.Yahoo_UserRegistrationType, ((UserRegistrationType)Model.Yahoo_UserRegistrationType).ToSelectList())
+            </td>
+        </tr>
+
+        @*Google*@
+            <tr class="adminSeparator">
+                <td colspan="2">
+                    <hr />
+                </td>
+            </tr>
+            <tr class="adminSeparator">
+                <td colspan="2">
+                    <b>@T("FoxNetSoft.ExternalAuth.Social.Google")</b>
+                    <br />
+                    Manage your applications <a href="https://code.google.com/apis/console/b/1/" target="blank" >https://code.google.com/apis/console/b/1/</a>
+                </td>
+            </tr>
+        <tr>
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.Google_Enable_OverrideForStore, model => model.Google_Enable, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.Google_Enable):
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.Google_Enable)
+            </td>
+        </tr>
+        <tr id="pnlGoogle_ClientKeyIdentifier">
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.Google_ClientKeyIdentifier_OverrideForStore, model => model.Google_ClientKeyIdentifier, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.Google_ClientKeyIdentifier):
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.Google_ClientKeyIdentifier)
+            </td>
+        </tr>
+        <tr id="pnlGoogle_ClientSecret">
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.Google_ClientSecret_OverrideForStore, model => model.Google_ClientSecret, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.Google_ClientSecret):
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.Google_ClientSecret)
+            </td>
+        </tr>
+        <tr id="pnlGoogle_CallbackURI">
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.Google_CallbackURI):
+            </td>
+            <td class="adminData">
+                <b>@Model.Google_CallbackURI</b>
+            </td>
+        </tr>
+        <tr id="pnlGoogle_UserRegistrationType">
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.Google_UserRegistrationType_OverrideForStore, model => model.Google_UserRegistrationType, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.Google_UserRegistrationType):
+            </td>
+            <td class="adminData">
+                @Html.DropDownListFor(model => model.Google_UserRegistrationType, ((UserRegistrationType)Model.Google_UserRegistrationType).ToSelectList())
+            </td>
+        </tr>
+        @*Twitter*@
+            <tr class="adminSeparator">
+                <td colspan="2">
+                    <hr />
+                </td>
+            </tr>
+            <tr class="adminSeparator">
+                <td colspan="2">
+                    <b>@T("FoxNetSoft.ExternalAuth.Social.Twitter")</b>
+                    <br />
+                    Manage your applications <a href="https://dev.twitter.com/apps" target="blank" >https://dev.twitter.com/apps</a>
+                    <br />
+                    Twitter doesn't give email. Plugin creates virtual email, etc username@twitter.com
+                </td>
+            </tr>
+        <tr>
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.Twitter_Enable_OverrideForStore, model => model.Twitter_Enable, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.Twitter_Enable):
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.Twitter_Enable)
+            </td>
+        </tr>
+        <tr id="pnlTwitter_ClientKeyIdentifier">
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.Twitter_ClientKeyIdentifier_OverrideForStore, model => model.Twitter_ClientKeyIdentifier, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.Twitter_ClientKeyIdentifier):
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.Twitter_ClientKeyIdentifier)
+            </td>
+        </tr>
+        <tr id="pnlTwitter_ClientSecret">
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.Twitter_ClientSecret_OverrideForStore, model => model.Twitter_ClientSecret, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.Twitter_ClientSecret):
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.Twitter_ClientSecret)
+            </td>
+        </tr>
+        <tr id="pnlTwitter_CallbackURI">
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.Twitter_CallbackURI):
+            </td>
+            <td class="adminData">
+                <b>@Model.Twitter_CallbackURI</b>
+            </td>
+        </tr>
+        <tr id="pnlTwitter_UserRegistrationType">
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.Twitter_UserRegistrationType_OverrideForStore, model => model.Twitter_UserRegistrationType, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.Twitter_UserRegistrationType):
+            </td>
+            <td class="adminData">
+                @Html.DropDownListFor(model => model.Twitter_UserRegistrationType, ((UserRegistrationType)Model.Twitter_UserRegistrationType).ToSelectList())
+            </td>
+        </tr>
+        @*LinkedIn*@
+            <tr class="adminSeparator">
+                <td colspan="2">
+                    <hr />
+                </td>
+            </tr>
+            <tr class="adminSeparator">
+                <td colspan="2">
+                    <b>@T("FoxNetSoft.ExternalAuth.Social.LinkedIn")</b>
+                    <br />
+                    Manage your applications <a href="https://www.linkedin.com/secure/developer" target="blank" >https://www.linkedin.com/secure/developer</a>
+                </td>
+            </tr>
+        <tr>
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.LinkedIn_Enable_OverrideForStore, model => model.LinkedIn_Enable, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.LinkedIn_Enable):
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.LinkedIn_Enable)
+            </td>
+        </tr>
+        <tr id="pnlLinkedIn_ClientKeyIdentifier">
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.LinkedIn_ClientKeyIdentifier_OverrideForStore, model => model.LinkedIn_ClientKeyIdentifier, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.LinkedIn_ClientKeyIdentifier):
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.LinkedIn_ClientKeyIdentifier)
+            </td>
+        </tr>
+        <tr id="pnlLinkedIn_ClientSecret">
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.LinkedIn_ClientSecret_OverrideForStore, model => model.LinkedIn_ClientSecret, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.LinkedIn_ClientSecret):
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.LinkedIn_ClientSecret)
+            </td>
+        </tr>
+        <tr id="pnlLinkedIn_CallbackURI">
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.LinkedIn_CallbackURI):
+            </td>
+            <td class="adminData">
+                <b>@Model.LinkedIn_CallbackURI</b>
+            </td>
+        </tr>
+        <tr id="pnlLinkedIn_UserRegistrationType">
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.LinkedIn_UserRegistrationType_OverrideForStore, model => model.LinkedIn_UserRegistrationType, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.LinkedIn_UserRegistrationType):
+            </td>
+            <td class="adminData">
+                @Html.DropDownListFor(model => model.LinkedIn_UserRegistrationType, ((UserRegistrationType)Model.LinkedIn_UserRegistrationType).ToSelectList())
+            </td>
+        </tr>
+        @*MailRu*@
+            <tr class="adminSeparator">
+                <td colspan="2">
+                    <hr />
+                </td>
+            </tr>
+            <tr class="adminSeparator">
+                <td colspan="2">
+                    <b>@T("FoxNetSoft.ExternalAuth.Social.MailRu")</b>
+                    <br />
+                    Manage your applications <a href="http://api.mail.ru/sites/my/" target="blank" >http://api.mail.ru/sites/my/</a>
+                </td>
+            </tr>
+        <tr>
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.MailRu_Enable_OverrideForStore, model => model.MailRu_Enable, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.MailRu_Enable):
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.MailRu_Enable)
+            </td>
+        </tr>
+        <tr id="pnlMailRu_ClientKeyIdentifier">
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.MailRu_ClientKeyIdentifier_OverrideForStore, model => model.MailRu_ClientKeyIdentifier, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.MailRu_ClientKeyIdentifier):
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.MailRu_ClientKeyIdentifier)
+            </td>
+        </tr>
+        <tr id="pnlMailRu_ClientSecret">
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.MailRu_ClientSecret_OverrideForStore, model => model.MailRu_ClientSecret, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.MailRu_ClientSecret):
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.MailRu_ClientSecret)
+            </td>
+        </tr>
+        <tr id="pnlMailRu_CallbackURI">
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.MailRu_CallbackURI):
+            </td>
+            <td class="adminData">
+                <b>@Model.MailRu_CallbackURI</b>
+            </td>
+        </tr>
+        <tr id="pnlMailRu_UserRegistrationType">
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.MailRu_UserRegistrationType_OverrideForStore, model => model.MailRu_UserRegistrationType, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.MailRu_UserRegistrationType):
+            </td>
+            <td class="adminData">
+                @Html.DropDownListFor(model => model.MailRu_UserRegistrationType, ((UserRegistrationType)Model.MailRu_UserRegistrationType).ToSelectList())
+            </td>
+        </tr>
+        @*Yandex*@
+            <tr class="adminSeparator">
+                <td colspan="2">
+                    <hr />
+                </td>
+            </tr>
+            <tr class="adminSeparator">
+                <td colspan="2">
+                    <b>@T("FoxNetSoft.ExternalAuth.Social.Yandex")</b>
+                    <br />
+                    Manage your applications <a href="https://oauth.yandex.ru/" target="blank" >https://oauth.yandex.ru/</a>
+                </td>
+            </tr>
+        <tr>
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.Yandex_Enable_OverrideForStore, model => model.Yandex_Enable, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.Yandex_Enable):
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.Yandex_Enable)
+            </td>
+        </tr>
+        <tr id="pnlYandex_ClientKeyIdentifier">
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.Yandex_ClientKeyIdentifier_OverrideForStore, model => model.Yandex_ClientKeyIdentifier, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.Yandex_ClientKeyIdentifier):
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.Yandex_ClientKeyIdentifier)
+            </td>
+        </tr>
+        <tr id="pnlYandex_ClientSecret">
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.Yandex_ClientSecret_OverrideForStore, model => model.Yandex_ClientSecret, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.Yandex_ClientSecret):
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.Yandex_ClientSecret)
+            </td>
+        </tr>
+        <tr id="pnlYandex_CallbackURI">
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.Yandex_CallbackURI):
+            </td>
+            <td class="adminData">
+                <b>@Model.Yandex_CallbackURI</b>
+            </td>
+        </tr>
+        <tr id="pnlYandex_UserRegistrationType">
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.Yandex_UserRegistrationType_OverrideForStore, model => model.Yandex_UserRegistrationType, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.Yandex_UserRegistrationType):
+            </td>
+            <td class="adminData">
+                @Html.DropDownListFor(model => model.Yandex_UserRegistrationType, ((UserRegistrationType)Model.Yandex_UserRegistrationType).ToSelectList())
+            </td>
+        </tr>        
+        @*Vk*@
+            <tr class="adminSeparator">
+                <td colspan="2">
+                    <hr />
+                </td>
+            </tr>
+            <tr class="adminSeparator">
+                <td colspan="2">
+                    <b>@T("FoxNetSoft.ExternalAuth.Social.Vk")</b>
+                    <br />
+                    Manage your applications <a href="http://vk.com/dev" target="blank" >http://vk.com/dev</a>
+                </td>
+            </tr>
+        <tr>
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.Vk_Enable_OverrideForStore, model => model.Vk_Enable, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.Vk_Enable):
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.Vk_Enable)
+            </td>
+        </tr>
+        <tr id="pnlVk_ClientKeyIdentifier">
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.Vk_ClientKeyIdentifier_OverrideForStore, model => model.Vk_ClientKeyIdentifier, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.Vk_ClientKeyIdentifier):
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.Vk_ClientKeyIdentifier)
+            </td>
+        </tr>
+        <tr id="pnlVk_ClientSecret">
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.Vk_ClientSecret_OverrideForStore, model => model.Vk_ClientSecret, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.Vk_ClientSecret):
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.Vk_ClientSecret)
+            </td>
+        </tr>
+        <tr id="pnlVk_CallbackURI">
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.Vk_CallbackURI):
+            </td>
+            <td class="adminData">
+                <b>@Model.Vk_CallbackURI</b>
+            </td>
+        </tr>
+        <tr id="pnlVk_UserRegistrationType">
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.Vk_UserRegistrationType_OverrideForStore, model => model.Vk_UserRegistrationType, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.Vk_UserRegistrationType):
+            </td>
+            <td class="adminData">
+                @Html.DropDownListFor(model => model.Vk_UserRegistrationType, ((UserRegistrationType)Model.Vk_UserRegistrationType).ToSelectList())
+            </td>
+        </tr>
+          @*Amazon*@
+            <tr class="adminSeparator">
+                <td colspan="2">
+                    <hr />
+                </td>
+            </tr>
+            <tr class="adminSeparator">
+                <td colspan="2">
+                    <b>@T("FoxNetSoft.ExternalAuth.Social.Amazon")</b>
+                    <br />
+                    Manage your applications <a href="http://login.amazon.com/manageApps" target="blank" >http://login.amazon.com/manageApps</a>
+                </td>
+            </tr>
+        <tr>
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.Amazon_Enable_OverrideForStore, model => model.Amazon_Enable, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.Amazon_Enable):
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.Amazon_Enable)
+            </td>
+        </tr>
+        <tr id="pnlAmazon_ClientKeyIdentifier">
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.Amazon_ClientKeyIdentifier_OverrideForStore, model => model.Amazon_ClientKeyIdentifier, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.Amazon_ClientKeyIdentifier):
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.Amazon_ClientKeyIdentifier)
+            </td>
+        </tr>
+        <tr id="pnlAmazon_ClientSecret">
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.Amazon_ClientSecret_OverrideForStore, model => model.Amazon_ClientSecret, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.Amazon_ClientSecret):
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.Amazon_ClientSecret)
+            </td>
+        </tr>
+        <tr id="pnlAmazon_CallbackURI">
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.Amazon_CallbackURI):
+            </td>
+            <td class="adminData">
+                <b>@Model.Amazon_CallbackURI</b>
+            </td>
+        </tr>
+        <tr id="pnlAmazon_UserRegistrationType">
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.Amazon_UserRegistrationType_OverrideForStore, model => model.Amazon_UserRegistrationType, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.Amazon_UserRegistrationType):
+            </td>
+            <td class="adminData">
+                @Html.DropDownListFor(model => model.Amazon_UserRegistrationType, ((UserRegistrationType)Model.Amazon_UserRegistrationType).ToSelectList())
+            </td>
+        </tr>      
+        
+          @*Microsoft*@
+            <tr class="adminSeparator">
+                <td colspan="2">
+                    <hr />
+                </td>
+            </tr>
+            <tr class="adminSeparator">
+                <td colspan="2">
+                    <b>@T("FoxNetSoft.ExternalAuth.Social.Microsoft")</b>
+                    <br />
+                    Manage your applications <a href="https://account.live.com/developers/applications" target="blank" >https://account.live.com/developers/applications</a>
+                </td>
+            </tr>
+        <tr>
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.Microsoft_Enable_OverrideForStore, model => model.Microsoft_Enable, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.Microsoft_Enable):
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.Microsoft_Enable)
+            </td>
+        </tr>
+        <tr id="pnlMicrosoft_ClientKeyIdentifier">
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.Microsoft_ClientKeyIdentifier_OverrideForStore, model => model.Microsoft_ClientKeyIdentifier, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.Microsoft_ClientKeyIdentifier):
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.Microsoft_ClientKeyIdentifier)
+            </td>
+        </tr>
+        <tr id="pnlMicrosoft_ClientSecret">
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.Microsoft_ClientSecret_OverrideForStore, model => model.Microsoft_ClientSecret, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.Microsoft_ClientSecret):
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.Microsoft_ClientSecret)
+            </td>
+        </tr>
+        <tr id="pnlMicrosoft_CallbackURI">
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.Microsoft_CallbackURI):
+            </td>
+            <td class="adminData">
+                <b>@Model.Microsoft_CallbackURI</b>
+            </td>
+        </tr>
+        <tr id="pnlMicrosoft_UserRegistrationType">
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.Microsoft_UserRegistrationType_OverrideForStore, model => model.Microsoft_UserRegistrationType, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.Microsoft_UserRegistrationType):
+            </td>
+            <td class="adminData">
+                @Html.DropDownListFor(model => model.Microsoft_UserRegistrationType, ((UserRegistrationType)Model.Microsoft_UserRegistrationType).ToSelectList())
+            </td>
+        </tr>      
+        <tr class="adminSeparator">
+            <td colspan="2">
+                <hr />
+            </td>
+        </tr>
+            <tr>
+                <td class="adminTitle">
+                    @Html.NopLabelFor(model => model.showDebugInfo):
+                </td>
+                <td class="adminData">
+                    @Html.EditorFor(model => model.showDebugInfo)
+                </td>
+            </tr>
+        @if (Model.IsArsUa == false)
+        {
+            <tr>
+                <td class="adminTitle">
+                    @Html.NopLabelFor(model=> model.StoreUrl):
+                </td>
+                <td class="adminData">
+                    <b>@Model.StoreUrl</b>
+                </td>
+            </tr>               
+        <tr>
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.SerialNumber):
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.SerialNumber)
+            </td>
+        </tr>
+        }
+        <tr>
+            <td colspan="2" width="100%">
+                <button type="submit" name="save" value="save" class="t-button">
+                    @T("Admin.Common.Save")</button>
+            </td>
+        </tr>
+        @if (Model.IsArsUa == false)
+        {
+            <tr>
+                <td colspan="2">
+                    Installation and configuring plug-in at Youtube <a href="http://www.youtube.com/foxnetsoft" target="blank" >www.youtube.com/foxnetsoft</a>
+                     <br />
+                    Installation and configuring plug-in at our site <a href="http://www.foxnetsoft.com/t/NopExAuthSocial" target="blank" >http://www.foxnetsoft.com/t/NopExAuthSocial</a>
+                     <br />
+                     <a href="http://www.foxnetsoft.com" target="blank" >www.foxnetsoft.com</a>
+                </td>
+            </tr>
+        }
+    </table>
+    
+}

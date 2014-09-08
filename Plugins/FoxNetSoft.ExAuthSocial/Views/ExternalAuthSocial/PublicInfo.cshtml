@@ -1,0 +1,80 @@
+﻿@using Nop.Web.Framework.UI
+@using FoxNetSoft.Plugin.ExternalAuth.Social.Models
+@model FoxNetSoft.Plugin.ExternalAuth.Social.Models.PublicInfoModel
+@{
+    Layout = "";
+
+    Html.AddCssFileParts("~/Plugins/FoxNetSoft.ExAuthSocial/Content/socialstyles.css");    
+}
+<div class="social-login-blocks">
+@if (Model.Facebook_Enable == true)
+{
+    <fieldset class="social-login-block">
+        <legend>@T("FoxNetSoft.ExternalAuth.Social.Facebook.Login")</legend>
+        <a href="@Url.RouteUrl("FoxNetSoft.Plugin.ExternalAuth.Social.FacebookLogin", new { ReturnUrl = HttpContext.Current.Request.QueryString["ReturnUrl"] })" class="exoauth_btn social-facebook-btn"></a>
+    </fieldset>
+}
+@if (Model.Yahoo_Enable == true)
+{
+    <fieldset class="social-login-block">
+        <legend>@T("FoxNetSoft.ExternalAuth.Social.Yahoo.Login")</legend>
+        <a href="@Url.RouteUrl("FoxNetSoft.Plugin.ExternalAuth.Social.YahooLogin", new { ReturnUrl = HttpContext.Current.Request.QueryString["ReturnUrl"] })" class="exoauth_btn social-yahoo-btn"></a>
+    </fieldset>
+}
+@if (Model.Google_Enable == true)
+{
+    <fieldset class="social-login-block">
+        <legend>@T("FoxNetSoft.ExternalAuth.Social.Google.Login")</legend>
+        <a href="@Url.RouteUrl("FoxNetSoft.Plugin.ExternalAuth.Social.GoogleLogin", new { ReturnUrl = HttpContext.Current.Request.QueryString["ReturnUrl"] })" class="exoauth_btn social-google-btn"></a>
+    </fieldset>
+}
+@if (Model.LinkedIn_Enable == true)
+{
+    <fieldset class="social-login-block">
+        <legend>@T("FoxNetSoft.ExternalAuth.Social.LinkedIn.Login")</legend>
+        <a href="@Url.RouteUrl("FoxNetSoft.Plugin.ExternalAuth.Social.LinkedInLogin", new { ReturnUrl = HttpContext.Current.Request.QueryString["ReturnUrl"] })" class="exoauth_btn social-linkedin-btn"></a>
+    </fieldset>
+}
+@if (Model.MailRu_Enable == true)
+{
+    <fieldset class="social-login-block">
+        <legend>@T("FoxNetSoft.ExternalAuth.Social.MailRu.Login")</legend>
+        <a href="@Url.RouteUrl("FoxNetSoft.Plugin.ExternalAuth.Social.MailRuLogin", new { ReturnUrl = HttpContext.Current.Request.QueryString["ReturnUrl"] })" class="exoauth_btn social-mailru-btn"></a>
+    </fieldset>
+}
+@if (Model.Twitter_Enable == true)
+{
+    <fieldset class="social-login-block">
+        <legend>@T("FoxNetSoft.ExternalAuth.Social.Twitter.Login")</legend>
+        <a href="@Url.RouteUrl("FoxNetSoft.Plugin.ExternalAuth.Social.TwitterLogin", new { ReturnUrl = HttpContext.Current.Request.QueryString["ReturnUrl"] })" class="exoauth_btn social-twitter-btn"></a>
+    </fieldset>
+}
+@if (Model.Vk_Enable == true)
+{
+    <fieldset class="social-login-block">
+        <legend>@T("FoxNetSoft.ExternalAuth.Social.Vk.Login")</legend>
+        <a href="@Url.RouteUrl("FoxNetSoft.Plugin.ExternalAuth.Social.VkLogin", new { ReturnUrl = HttpContext.Current.Request.QueryString["ReturnUrl"] })" class="exoauth_btn social-vk-btn"></a>
+    </fieldset>
+}
+@if (Model.Yandex_Enable == true)
+{
+    <fieldset class="social-login-block">
+        <legend>@T("FoxNetSoft.ExternalAuth.Social.Yandex.Login")</legend>
+        <a href="@Url.RouteUrl("FoxNetSoft.Plugin.ExternalAuth.Social.YandexLogin", new { ReturnUrl = HttpContext.Current.Request.QueryString["ReturnUrl"] })" class="exoauth_btn social-yandex-btn"></a>
+    </fieldset>
+}
+@if (Model.Amazon_Enable == true)
+{
+    <fieldset class="social-login-block">
+        <legend>@T("FoxNetSoft.ExternalAuth.Social.Amazon.Login")</legend>
+        <a href="@Url.RouteUrl("FoxNetSoft.Plugin.ExternalAuth.Social.AmazonLogin", new { ReturnUrl = HttpContext.Current.Request.QueryString["ReturnUrl"] })" class="exoauth_btn social-amazon-btn"></a>
+    </fieldset>
+}
+@if (Model.Microsoft_Enable == true)
+{
+    <fieldset class="social-login-block">
+        <legend>@T("FoxNetSoft.ExternalAuth.Social.Microsoft.Login")</legend>
+        <a href="@Url.RouteUrl("FoxNetSoft.Plugin.ExternalAuth.Social.MicrosoftLogin", new { ReturnUrl = HttpContext.Current.Request.QueryString["ReturnUrl"] })" class="exoauth_btn social-microsoft-btn"></a>
+    </fieldset>
+}
+</div>

@@ -1,0 +1,8 @@
+﻿Group: ExternalAuth methods
+FriendlyName: Social Login (Facebook, Google, Yahoo, Twitter, LinkedIn, Amazon, Microsoft, etc.)
+SystemName: FoxNetSoft.ExternalAuth.Social
+Version: 1.07
+SupportedVersions: 3.40
+Author: FoxNetSoft
+DisplayOrder: 5
+FileName: FoxNetSoft.Plugin.ExternalAuth.Social.dll
